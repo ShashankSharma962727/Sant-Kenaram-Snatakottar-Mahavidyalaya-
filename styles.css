@@ -1,0 +1,21 @@
+
+
+.primaryBG{
+    background-color: #142952;
+}
+
+.secondaryBG{
+    background-color: #F5F6F8;
+}
+
+.primaryText{
+    color: #142952;
+}
+
+.primaryFont{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.secondaryFont{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
