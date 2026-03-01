@@ -7,27 +7,66 @@
     <title>Sant Kenaram Snatakottar Mahavidyalaya</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        /* Mobile menu animation */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        #mobile-menu.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        /* Burger icon lines animation */
+        #burger-btn .line1,
+        #burger-btn .line2,
+        #burger-btn .line3 {
+            transition: all 0.3s ease;
+        }
+
+        #burger-btn.active .line1 {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        #burger-btn.active .line2 {
+            opacity: 0;
+        }
+
+        #burger-btn.active .line3 {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+    </style>
 </head>
 
 <body class="font-sans bg-gray-50">
     <!-- Top Header -->
-    <header class="bg-[#0a1a44] text-white text-sm py-2 fixed top-0 w-full z-50">
-        <div class="flex justify-between items-center w-[70%] mx-auto">
-            <p>Affiliated to Mahatma Gandhi Kashi Vidyapith, Varanasi</p>
-            <p>📞 +91 12345 67890</p>
+    <header class="bg-[#0a1a44] text-white text-sm py-2 fixed top-0 w-full z-50 primaryBG">
+        <div class="flex justify-between items-center w-[90%] lg:w-[70%] mx-auto">
+            <p class="text-sm">
+                Affiliated to Mahatma Gandhi Kashi Vidyapith, Varanasi
+            </p>
+            <p class="hidden sm:flex items-center gap-2 text-sm hover:text-yellow-500">
+                <img src="./assets/phoneNum.svg" alt="phone" class="w-4 h-4">
+                +91 12345 67890
+            </p>
         </div>
     </header>
 
     <!-- Navbar -->
     <nav class="bg-white fixed top-[40px] w-full z-40 shadow-sm border-b border-gray-200">
-        <div class="flex items-center justify-between w-[70%] mx-auto py-4 gap-6 flex-wrap">
+        <div class="flex items-center justify-between w-[90%] lg:w-[70%] mx-auto py-4 gap-6">
             <!-- Logo + Name -->
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-[#0a1a44] rounded-full flex justify-center items-center">
+                <div
+                    class="w-12 h-12 rounded-full flex justify-center items-center bg-gradient-to-br from-[#0a1a44] to-[#b91d73] shrink-0">
                     <img class="w-7" src="./assets/edu-cap.svg" alt="logo" />
                 </div>
                 <div>
-                    <h1 class="text-[#0a1a44] font-bold text-lg">
+                    <h1 class="text-[#0a1a44] font-bold text-base sm:text-lg primaryFont leading-tight">
                         Sant Kenaram Snatakottar Mahavidyalaya
                     </h1>
                     <p class="text-xs text-gray-600">
@@ -36,24 +75,57 @@
                 </div>
             </div>
 
-            <!-- Menu -->
-            <ul class="flex gap-6 text-sm text-gray-800 font-medium items-center">
-                <li>
-                    <a href="/" class="bg-[#0a1a44] text-white px-3 py-1 rounded-md font-semibold">Home</a>
-                </li>
-                <li><a href="/About.html" class="hover:text-[#f7b500]">About</a></li>
-                <li><a href="/Courses.html" class="hover:text-[#f7b500]">Courses</a></li>
-                <li><a href="/Admissions.html" class="hover:text-[#f7b500]">Admissions</a></li>
-                <li><a href="/Facilities.html" class="hover:text-[#f7b500]">Facilities</a></li>
-                <li><a href="/Gallery.html" class="hover:text-[#f7b500]">Gallery</a></li>
-                <li><a href="/Contact.html" class="hover:text-[#f7b500]">Contact</a></li>
-            </ul>
+            <!-- Desktop Menu -->
+            <ul class="hidden lg:flex gap-4 text-sm text-gray-800 font-medium items-center">
+        <li><a href="/" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">Home</a></li>
+        <li><a href="/About.html" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">About</a></li>
+        <li><a href="/Courses.html" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">Courses</a></li>
+        <li><a href="/Admissions.html" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">Admissions</a></li>
+        <li><a href="/Facilities.html" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">Facilities</a></li>
+        <li><a href="/Gallery.html" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">Gallery</a></li>
+        <li><a href="/Contact.html" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">Contact</a></li>
+      </ul>
 
-            <!-- Apply Button -->
+            <!-- Desktop Apply Button -->
             <button
-                class="bg-[#f7b500] text-[#0a1a44] px-4 py-2 rounded-md font-semibold hover:bg-yellow-500 transition-all">
+                class="hidden lg:block bg-[#f7b500] text-[#0a1a44] px-4 py-2 rounded-md font-semibold hover:scale-102 transition-all shrink-0">
                 Apply Now
             </button>
+
+            <!-- Burger Button (visible on < lg) -->
+            <button id="burger-btn"
+                class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-[6px] shrink-0"
+                onclick="toggleMenu()">
+                <span class="line1 block w-6 h-0.5 bg-[#0a1a44] rounded"></span>
+                <span class="line2 block w-6 h-0.5 bg-[#0a1a44] rounded"></span>
+                <span class="line3 block w-6 h-0.5 bg-[#0a1a44] rounded"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="lg:hidden bg-white border-t border-gray-100 shadow-md">
+            <ul class="flex flex-col text-sm text-gray-800 font-medium px-6 py-4 gap-1">
+                <li>
+                    <a href="/" class="block bg-[#0a1a44] text-white px-4 py-2.5 rounded-lg font-semibold">Home</a>
+                </li>
+                <li><a href="/About.html" class="block hover:bg-gray-100 px-4 py-2.5 rounded-md font-semibold">About</a>
+                </li>
+                <li><a href="/Courses.html"
+                        class="block hover:bg-gray-100 px-4 py-2.5 rounded-md font-semibold">Courses</a></li>
+                <li><a href="/Admissions.html"
+                        class="block hover:bg-gray-100 px-4 py-2.5 rounded-md font-semibold">Admissions</a></li>
+                <li><a href="/Facilities.html"
+                        class="block hover:bg-gray-100 px-4 py-2.5 rounded-md font-semibold">Facilities</a></li>
+                <li><a href="/Gallery.html"
+                        class="block hover:bg-gray-100 px-4 py-2.5 rounded-md font-semibold">Gallery</a></li>
+                <li><a href="/Contact.html"
+                        class="block hover:bg-gray-100 px-4 py-2.5 rounded-md font-semibold">Contact</a></li>
+                <li class="pt-2">
+                    <button class="w-full bg-[#f7b500] text-[#0a1a44] px-4 py-2.5 rounded-md font-semibold">
+                        Apply Now
+                    </button>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -67,14 +139,117 @@
         </main>
     </section>
 
-    <footer class="bg-[#0a1a44] text-gray-300 pt-25 pb-6">
-        <main class="w-[70%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+    <!-- Yaha add kro -->
+    <!-- About College Details Section -->
+    <section class="w-[70%] mx-auto py-20">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Text Content -->
+            <div>
+                <h2 class="text-3xl md:text-5xl font-bold text-[#0a1a44] mb-4 leading-tight">
+                    संत केनाराम स्नातकोत्तर महाविद्यालय
+                </h2>
+                <p class="text-gray-600 leading-relaxed mb-5">
+                    Sant Kenaram Snatakottar Mahavidyalaya, located in Lodi, Robertsganj, Sonbhadra
+                    (Uttar Pradesh), is a distinguished institution of higher education dedicated to
+                    academic excellence and holistic development of students.
+                </p>
+                <p class="text-gray-600 leading-relaxed mb-5">
+                    Affiliated to Mahatma Gandhi Kashi Vidyapith, Varanasi, our college offers a
+                    comprehensive range of undergraduate and postgraduate programs in Arts, Science,
+                    Commerce, Agriculture, and Education.
+                </p>
+                <p class="text-gray-600 leading-relaxed">
+                    Our institution stands as a beacon of knowledge in the Sonbhadra region, providing
+                    quality education to students from diverse backgrounds and helping them achieve
+                    their academic and professional aspirations.
+                </p>
+            </div>
 
-            <!-- College Info -->
+            <!-- Image Card -->
+            <div class="relative">
+                <img src="./assets/hero-page.jpg" alt="college"
+                    class="rounded-2xl shadow-lg object-cover w-full h-[380px]" />
+                <div
+                    class="absolute -bottom-5 -left-4 bg-[#f7b500] text-[#0a1a44] px-6 py-6 rounded-md text-sm font-semibold">
+                    <span class="text-3xl font-semibold">Est.</span> <br />Since Establishment
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section class="w-[70%] mx-auto py-16 grid md:grid-cols-2 gap-8">
+        <div class="bg-white shadow-md rounded-xl px-8 py-9 hover:shadow-lg transition">
+            <div
+                class="w-15 h-15 bg-gradient-to-br from-[#0a1a44] to-[#b91d73] text-white flex justify-center items-center rounded-xl mb-4">
+                <img src="./assets/eye.svg" class="w-6">
+            </div>
+            <h3 class="text-2xl font-semibold text-[#0a1a44] mb-2 primaryFont">Our Vision</h3>
+            <p class="text-gray-600 leading-relaxed secondaryFont">
+                To be a premier institution of higher education that fosters intellectual growth,
+                ethical values, and social responsibility. We envision creating leaders who
+                contribute positively to society and drive progress in their respective fields.
+            </p>
+        </div>
+
+        <div class="bg-white shadow-md rounded-xl px-8 py-9 hover:shadow-lg transition">
+            <div
+                class="w-15 h-15 bg-gradient-to-br from-[#0a1a44] to-[#b91d73] text-white flex justify-center items-center rounded-xl mb-4">
+                <img src="./assets/mission.svg" class="w-4">
+            </div>
+            <h3 class="text-2xl font-semibold text-[#0a1a44] mb-2 primaryFont">Our Mission</h3>
+            <p class="text-gray-600 leading-relaxed secondaryFont">
+                To provide quality education accessible to all, nurture academic excellence through
+                innovative teaching, promote research and scholarly activities, and develop
+                well-rounded individuals prepared for the challenges of the modern world.
+            </p>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="bg-gray-50 py-16">
+        <div class="w-[70%] mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold text-[#0a1a44] mb-12 primaryFont">Our Core Values</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="flex items-center flex-col">
+                    <div class="mb-2 w-15 h-15 flex items-center justify-center rounded-full bg-gray-200">
+                        <img src="./assets/book-about.svg" class="w-8"></i>
+                    </div>
+                    <h4 class="font-semibold text-lg mb-1 primaryFont">Academic Excellence</h4>
+                    <p class="text-gray-600 text-sm">Commitment to highest standards of education</p>
+                </div>
+                <div class="flex items-center flex-col">
+                    <div class="mb-2 w-15 h-15 flex items-center justify-center rounded-full bg-gray-200">
+                        <img src="./assets/peoples-about.svg" class="w-8">
+                    </div>
+                    <h4 class="font-semibold text-lg mb-1 primaryFont">Inclusivity</h4>
+                    <p class="text-gray-600 text-sm">Education accessible to students from all backgrounds</p>
+                </div>
+                <div class="flex items-center flex-col">
+                    <div class="mb-2 w-15 h-15 flex items-center justify-center rounded-full bg-gray-200">
+                        <img src="./assets/badge-about.svg" class="w-8">
+                    </div>
+                    <h4 class="font-semibold text-lg mb-1 primaryFont">Integrity</h4>
+                    <p class="text-gray-600 text-sm">Upholding ethical standards in all endeavors</p>
+                </div>
+                <div class="flex items-center flex-col">
+                    <div class="mb-2 w-15 h-15 flex items-center justify-center rounded-full bg-gray-200">
+                        <img src="./assets/building-about.svg" class="w-8">
+                    </div>
+                    <h4 class="font-semibold text-lg mb-1 primaryFont">Innovation</h4>
+                    <p class="text-gray-600 text-sm">Embracing modern teaching methodologies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#0a1a44] text-gray-300 pt-25 pb-6">
+        <main class="w-[90%] lg:w-[70%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+
             <div>
                 <div class="flex items-center gap-3 mb-4">
                     <div class="bg-[#f7b500] p-3 rounded-full">
-                        <img src="./assets/edu-cap.svg" alt="logo" class="w-6 h-6" />
+                        <img src="./assets/edu-cap-3.svg" alt="logo" class="w-6 h-6" />
                     </div>
                     <div>
                         <h3 class="font-bold text-white text-lg primaryFont">Sant Kenaram</h3>
@@ -85,68 +260,72 @@
                     A premier institution committed to academic excellence and holistic development of students since
                     its establishment.
                 </p>
-                <!-- Social Icons -->
                 <div class="flex gap-3">
-                    <a href="#" class="bg-gray-700 hover:bg-[#f7b500] text-white rounded-full p-2 transition"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="bg-gray-700 hover:bg-[#f7b500] text-white rounded-full p-2 transition"><i
-                            class="fab fa-twitter"></i></a>
-                    <a href="#" class="bg-gray-700 hover:bg-[#f7b500] text-white rounded-full p-2 transition"><i
-                            class="fab fa-instagram"></i></a>
-                    <a href="#" class="bg-gray-700 hover:bg-[#f7b500] text-white rounded-full p-2 transition"><i
-                            class="fab fa-youtube"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-[#f7b500] rounded-full transition">
+                        <img src="/assets/facebook.svg" class="w-4 h-4" />
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-[#f7b500] rounded-full transition">
+                        <img src="/assets/twitter.svg" class="w-4 h-4" />
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-[#f7b500] rounded-full transition">
+                        <img src="/assets/instagram.svg" class="w-4 h-4" />
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-[#f7b500] rounded-full transition">
+                        <img src="/assets/youtube.svg" class="w-4 h-4" />
+                    </a>
                 </div>
             </div>
 
-            <!-- Quick Links -->
             <div>
                 <h3 class="font-bold text-white text-lg mb-4 primaryFont">Quick Links</h3>
                 <ul class="space-y-2 text-sm flex flex-col gap-3">
-                    <li><a href="#" class="hover:text-[#f7b500]">About Us</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">Courses</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">Admissions</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">Facilities</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">Gallery</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">Contact</a></li>
+                    <li><a href="/About.html" class="hover:text-[#f7b500]">About Us</a></li>
+                    <li><a href="/Courses.html" class="hover:text-[#f7b500]">Courses</a></li>
+                    <li><a href="/Admissions.html" class="hover:text-[#f7b500]">Admissions</a></li>
+                    <li><a href="/Facilities.html" class="hover:text-[#f7b500]">Facilities</a></li>
+                    <li><a href="/Gallery.html" class="hover:text-[#f7b500]">Gallery</a></li>
+                    <li><a href="/Contact.html" class="hover:text-[#f7b500]">Contact</a></li>
                 </ul>
             </div>
 
-            <!-- Our Courses -->
             <div>
                 <h3 class="font-bold text-white text-lg mb-4 primaryFont">Our Courses</h3>
                 <ul class="space-y-2 text-sm flex flex-col gap-3">
-                    <li><a href="#" class="hover:text-[#f7b500]">B.A. Programs</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">B.Sc. Programs</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">B.Com</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">M.A. Programs</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">B.Ed.</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">Agriculture</a></li>
+                    <li><a href="/Courses.html" class="hover:text-[#f7b500]">B.Sc. Programs</a></li>
+                    <li><a href="/Courses.html" class="hover:text-[#f7b500]">B.A. Programs</a></li>
+                    <li><a href="/Courses.html" class="hover:text-[#f7b500]">B.Com</a></li>
+                    <li><a href="/Courses.html" class="hover:text-[#f7b500]">M.A. Programs</a></li>
+                    <li><a href="/Courses.html" class="hover:text-[#f7b500]">B.Ed.</a></li>
+                    <li><a href="/Courses.html" class="hover:text-[#f7b500]">Agriculture</a></li>
                 </ul>
             </div>
 
-            <!-- Contact Info -->
             <div>
                 <h3 class="font-bold text-white text-lg mb-4 primaryFont">Contact Us</h3>
                 <ul class="space-y-3 text-sm flex flex-col gap-3">
                     <li class="flex items-start gap-3">
-                        <span>📍</span>
+                        <span><img src="./assets/location-pin-svgrepo-com.svg" class="w-5"></span>
                         <p>Lodi, Robertsganj,<br> Sonbhadra (U.P.) – 231216</p>
                     </li>
                     <li class="flex items-center gap-3">
-                        <span>📞</span>
+                        <span><img src="./assets/phoneNum-2.svg" class="w-5"></span>
                         <p>+91 12345 67890</p>
                     </li>
                     <li class="flex items-center gap-3">
-                        <span>✉️</span>
+                        <span><img src="./assets//mail -2.svg" class="w-4"></span>
                         <p>info@sksmcollege.edu.in</p>
                     </li>
                 </ul>
             </div>
         </main>
 
-        <!-- Bottom Bar -->
         <div class="border-t border-gray-700 pt-4 mt-25">
-            <div class="w-[70%] mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400">
+            <div
+                class="w-[90%] lg:w-[70%] mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400">
                 <p>© 2026 Sant Kenaram Snatakottar Mahavidyalaya. All rights reserved.</p>
                 <div class="flex gap-4 mt-2 sm:mt-0">
                     <a href="#" class="hover:text-[#f7b500]">Privacy Policy</a>
@@ -156,8 +335,41 @@
         </div>
     </footer>
 
+    <script src="https://kit.fontawesome.com/a2e0ad6d3f.js" crossorigin="anonymous"></script>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const btn = document.getElementById('burger-btn');
+            menu.classList.toggle('open');
+            btn.classList.toggle('active');
+        }
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.remove('open');
+                document.getElementById('burger-btn').classList.remove('active');
+            });
+        });
+    </script>
     <!-- Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/a2e0ad6d3f.js" crossorigin="anonymous"></script>
+    <script>
+  // Highlight active page in navbar
+  const links = document.querySelectorAll('.nav-link');
+  const currentPath = window.location.pathname;
+
+  links.forEach(link => {
+    // Normalize both paths for comparison
+    const linkPath = new URL(link.href).pathname;
+    if (linkPath === currentPath) {
+      link.classList.add('bg-[#0a1a44]', 'text-white');
+    } else {
+      link.classList.remove('bg-[#0a1a44]', 'text-white');
+    }
+  });
+</script>
 </body>
 
 </html>

@@ -7,55 +7,114 @@
     <title>Sant Kenaram Snatakottar Mahavidyalaya</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+    /* Mobile menu animation */
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease;
+      opacity: 0;
+    }
+    #mobile-menu.open {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    /* Burger icon lines animation */
+    #burger-btn .line1,
+    #burger-btn .line2,
+    #burger-btn .line3 {
+      transition: all 0.3s ease;
+    }
+    #burger-btn.active .line1 {
+      transform: translateY(8px) rotate(45deg);
+    }
+    #burger-btn.active .line2 {
+      opacity: 0;
+    }
+    #burger-btn.active .line3 {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  </style>
 </head>
 
 <body class="font-sans bg-gray-50">
     <!-- Top Header -->
-    <header class="bg-[#0a1a44] text-white text-sm py-2 fixed top-0 w-full z-50">
-        <div class="flex justify-between items-center w-[70%] mx-auto">
-            <p>Affiliated to Mahatma Gandhi Kashi Vidyapith, Varanasi</p>
-            <p>📞 +91 12345 67890</p>
+    <header class="bg-[#0a1a44] text-white text-sm py-2 fixed top-0 w-full z-50 primaryBG">
+    <div class="flex justify-between items-center w-[90%] lg:w-[70%] mx-auto">
+      <p class="text-sm">
+        Affiliated to Mahatma Gandhi Kashi Vidyapith, Varanasi
+      </p>
+      <p class="hidden sm:flex items-center gap-2 text-sm hover:text-yellow-500">
+        <img src="./assets/phoneNum.svg" alt="phone" class="w-4 h-4">
+        +91 12345 67890
+      </p>
+    </div>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="bg-white fixed top-[40px] w-full z-40 shadow-sm border-b border-gray-200">
+    <div class="flex items-center justify-between w-[90%] lg:w-[70%] mx-auto py-4 gap-6">
+      <!-- Logo + Name -->
+      <div class="flex items-center gap-3">
+        <div
+          class="w-12 h-12 rounded-full flex justify-center items-center bg-gradient-to-br from-[#0a1a44] to-[#b91d73] shrink-0">
+          <img class="w-7" src="./assets/edu-cap.svg" alt="logo" />
         </div>
-    </header>
-
-    <!-- Navbar -->
-    <nav class="bg-white fixed top-[40px] w-full z-40 shadow-sm border-b border-gray-200">
-        <div class="flex items-center justify-between w-[70%] mx-auto py-4 gap-6 flex-wrap">
-            <!-- Logo + Name -->
-            <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-[#0a1a44] rounded-full flex justify-center items-center">
-                    <img class="w-7" src="./assets/edu-cap.svg" alt="logo" />
-                </div>
-                <div>
-                    <h1 class="text-[#0a1a44] font-bold text-lg">
-                        Sant Kenaram Snatakottar Mahavidyalaya
-                    </h1>
-                    <p class="text-xs text-gray-600">
-                        Lodi, Robertsganj, Sonbhadra (U.P.)
-                    </p>
-                </div>
-            </div>
-
-            <!-- Menu -->
-            <ul class="flex gap-6 text-sm text-gray-800 font-medium items-center">
-                <li>
-                    <a href="/" class="bg-[#0a1a44] text-white px-3 py-1 rounded-md font-semibold">Home</a>
-                </li>
-                <li><a href="/About.html" class="hover:text-[#f7b500]">About</a></li>
-                <li><a href="/Courses.html" class="hover:text-[#f7b500]">Courses</a></li>
-                <li><a href="/Admissions.html" class="hover:text-[#f7b500]">Admissions</a></li>
-                <li><a href="/Facilities.html" class="hover:text-[#f7b500]">Facilities</a></li>
-                <li><a href="/Gallery.html" class="hover:text-[#f7b500]">Gallery</a></li>
-                <li><a href="/Contact.html" class="hover:text-[#f7b500]">Contact</a></li>
-            </ul>
-
-            <!-- Apply Button -->
-            <button
-                class="bg-[#f7b500] text-[#0a1a44] px-4 py-2 rounded-md font-semibold hover:bg-yellow-500 transition-all">
-                Apply Now
-            </button>
+        <div>
+          <h1 class="text-[#0a1a44] font-bold text-base sm:text-lg primaryFont leading-tight">
+            Sant Kenaram Snatakottar Mahavidyalaya
+          </h1>
+          <p class="text-xs text-gray-600">
+            Lodi, Robertsganj, Sonbhadra (U.P.)
+          </p>
         </div>
-    </nav>
+      </div>
+
+      <!-- Desktop Menu -->
+      <ul class="hidden lg:flex gap-4 text-sm text-gray-800 font-medium items-center">
+        <li><a href="/" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">Home</a></li>
+        <li><a href="/About.html" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">About</a></li>
+        <li><a href="/Courses.html" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">Courses</a></li>
+        <li><a href="/Admissions.html" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">Admissions</a></li>
+        <li><a href="/Facilities.html" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">Facilities</a></li>
+        <li><a href="/Gallery.html" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">Gallery</a></li>
+        <li><a href="/Contact.html" class="nav-link hover:bg-gray-200 px-2 py-2 rounded-md font-semibold text-gray-800">Contact</a></li>
+      </ul>
+
+      <!-- Desktop Apply Button -->
+      <button class="hidden lg:block bg-[#f7b500] text-[#0a1a44] px-4 py-2 rounded-md font-semibold hover:scale-102 transition-all shrink-0">
+        Apply Now
+      </button>
+
+      <!-- Burger Button (visible on < lg) -->
+      <button id="burger-btn" class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-[6px] shrink-0" onclick="toggleMenu()">
+        <span class="line1 block w-6 h-0.5 bg-[#0a1a44] rounded"></span>
+        <span class="line2 block w-6 h-0.5 bg-[#0a1a44] rounded"></span>
+        <span class="line3 block w-6 h-0.5 bg-[#0a1a44] rounded"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="lg:hidden bg-white border-t border-gray-100 shadow-md">
+      <ul class="flex flex-col text-sm text-gray-800 font-medium px-6 py-4 gap-1">
+        <li>
+          <a href="/" class="block bg-[#0a1a44] text-white px-4 py-2.5 rounded-lg font-semibold">Home</a>
+        </li>
+        <li><a href="/About.html" class="block hover:bg-gray-100 px-4 py-2.5 rounded-md font-semibold">About</a></li>
+        <li><a href="/Courses.html" class="block hover:bg-gray-100 px-4 py-2.5 rounded-md font-semibold">Courses</a></li>
+        <li><a href="/Admissions.html" class="block hover:bg-gray-100 px-4 py-2.5 rounded-md font-semibold">Admissions</a></li>
+        <li><a href="/Facilities.html" class="block hover:bg-gray-100 px-4 py-2.5 rounded-md font-semibold">Facilities</a></li>
+        <li><a href="/Gallery.html" class="block hover:bg-gray-100 px-4 py-2.5 rounded-md font-semibold">Gallery</a></li>
+        <li><a href="/Contact.html" class="block hover:bg-gray-100 px-4 py-2.5 rounded-md font-semibold">Contact</a></li>
+        <li class="pt-2">
+          <button class="w-full bg-[#f7b500] text-[#0a1a44] px-4 py-2.5 rounded-md font-semibold">
+            Apply Now
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
     <!-- About Our College Section -->
     <section class="bg-gradient-to-br from-[#0a1a44] to-[#7a1534] text-white py-20 mt-[90px]">
@@ -67,97 +126,266 @@
         </main>
     </section>
 
-    <footer class="bg-[#0a1a44] text-gray-300 pt-25 pb-6">
-        <main class="w-[70%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+    <!-- Facilities Section -->
+<section class="w-[70%] mx-auto py-20 space-y-20">
 
-            <!-- College Info -->
-            <div>
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="bg-[#f7b500] p-3 rounded-full">
-                        <img src="./assets/edu-cap.svg" alt="logo" class="w-6 h-6" />
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-white text-lg primaryFont">Sant Kenaram</h3>
-                        <p class="text-sm">Snatakottar Mahavidyalaya</p>
-                    </div>
-                </div>
-                <p class="text-sm leading-relaxed mb-4">
-                    A premier institution committed to academic excellence and holistic development of students since
-                    its establishment.
-                </p>
-                <!-- Social Icons -->
-                <div class="flex gap-3">
-                    <a href="#" class="bg-gray-700 hover:bg-[#f7b500] text-white rounded-full p-2 transition"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="bg-gray-700 hover:bg-[#f7b500] text-white rounded-full p-2 transition"><i
-                            class="fab fa-twitter"></i></a>
-                    <a href="#" class="bg-gray-700 hover:bg-[#f7b500] text-white rounded-full p-2 transition"><i
-                            class="fab fa-instagram"></i></a>
-                    <a href="#" class="bg-gray-700 hover:bg-[#f7b500] text-white rounded-full p-2 transition"><i
-                            class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-
-            <!-- Quick Links -->
-            <div>
-                <h3 class="font-bold text-white text-lg mb-4 primaryFont">Quick Links</h3>
-                <ul class="space-y-2 text-sm flex flex-col gap-3">
-                    <li><a href="#" class="hover:text-[#f7b500]">About Us</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">Courses</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">Admissions</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">Facilities</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">Gallery</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Our Courses -->
-            <div>
-                <h3 class="font-bold text-white text-lg mb-4 primaryFont">Our Courses</h3>
-                <ul class="space-y-2 text-sm flex flex-col gap-3">
-                    <li><a href="#" class="hover:text-[#f7b500]">B.A. Programs</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">B.Sc. Programs</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">B.Com</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">M.A. Programs</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">B.Ed.</a></li>
-                    <li><a href="#" class="hover:text-[#f7b500]">Agriculture</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact Info -->
-            <div>
-                <h3 class="font-bold text-white text-lg mb-4 primaryFont">Contact Us</h3>
-                <ul class="space-y-3 text-sm flex flex-col gap-3">
-                    <li class="flex items-start gap-3">
-                        <span>📍</span>
-                        <p>Lodi, Robertsganj,<br> Sonbhadra (U.P.) – 231216</p>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <span>📞</span>
-                        <p>+91 12345 67890</p>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <span>✉️</span>
-                        <p>info@sksmcollege.edu.in</p>
-                    </li>
-                </ul>
-            </div>
-        </main>
-
-        <!-- Bottom Bar -->
-        <div class="border-t border-gray-700 pt-4 mt-25">
-            <div class="w-[70%] mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400">
-                <p>© 2026 Sant Kenaram Snatakottar Mahavidyalaya. All rights reserved.</p>
-                <div class="flex gap-4 mt-2 sm:mt-0">
-                    <a href="#" class="hover:text-[#f7b500]">Privacy Policy</a>
-                    <a href="#" class="hover:text-[#f7b500]">Terms of Service</a>
-                </div>
-            </div>
+  <!-- Facility 1: Central Library -->
+  <div class="grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 bg-[#0a1a44] text-white rounded-md flex justify-center items-center">
+          <img src="./assets/bookself.svg" class="w-4">
         </div>
-    </footer>
+        <h3 class="text-2xl font-bold text-[#0a1a44] primaryFont md:text-3xl">Central Library</h3>
+      </div>
+      <p class="text-gray-600 mb-4">
+        Our well-stocked library houses thousands of books, journals, and digital resources.
+        It provides a quiet and conducive environment for study and research.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">50,000+ Books</span>
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">E-Library Access</span>
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Reading Halls</span>
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Reference Section</span>
+      </div>
+    </div>
+    <div>
+      <img src="./assets/library.jpg" alt="Library" class="rounded-2xl shadow-md object-cover w-full h-[480px]" />
+    </div>
+  </div>
 
+  <!-- Facility 2: Science Laboratories -->
+  <div class="grid md:grid-cols-2 gap-10 items-center md:flex-row-reverse">
+    <div class="md:order-2">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 bg-[#0a1a44] text-white rounded-md flex justify-center items-center">
+          <img src="./assets/beaker-2.svg" class="w-5">
+        </div>
+        <h3 class="text-2xl font-bold text-[#0a1a44] primaryFont md:text-3xl">Science Laboratories</h3>
+      </div>
+      <p class="text-gray-600 mb-4">
+        State-of-the-art laboratories equipped with modern instruments for practical
+        experiments in Physics, Chemistry, Biology, and Computer Science.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Modern Equipment</span>
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Safety Protocols</span>
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Qualified Staff</span>
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Regular Practicals</span>
+      </div>
+    </div>
+    <div class="md:order-1">
+      <img src="./assets/laboratory.jpg" alt="Science Lab" class="rounded-2xl shadow-md object-cover w-full h-[480px]" />
+    </div>
+  </div>
+
+  <!-- Facility 3: Smart Classrooms -->
+  <div class="grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 bg-[#0a1a44] text-white rounded-md flex justify-center items-center">
+          <img src="./assets/building.svg" class="w-5">
+        </div>
+        <h3 class="text-2xl font-bold text-[#0a1a44] primaryFont md:text-3xl">Smart Classrooms</h3>
+      </div>
+      <p class="text-gray-600 mb-4">
+        Well-ventilated classrooms with modern teaching aids including projectors and
+        digital boards for interactive learning experience.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Projection-Enabled</span>
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Comfortable Seating</span>
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Ventilated</span>
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Natural Lighting</span>
+      </div>
+    </div>
+    <div>
+      <img src="./assets/classroom.jpg" alt="Smart Classroom" class="rounded-2xl shadow-md object-cover w-full h-[480px]" />
+    </div>
+  </div>
+
+  <!-- Facility 4: Sports Complex -->
+  <div class="grid md:grid-cols-2 gap-10 items-center md:flex-row-reverse">
+    <div class="md:order-2">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 bg-[#0a1a44] text-white rounded-md flex justify-center items-center">
+          <img src="./assets/trophy.svg" class="w-6">
+        </div>
+        <h3 class="text-2xl font-bold text-[#0a1a44] primaryFont md:text-3xl">Sports Complex</h3>
+      </div>
+      <p class="text-gray-600 mb-4">
+        Comprehensive sports facilities including playground, courts, and equipment for
+        various indoor and outdoor games to promote physical fitness.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Cricket Ground</span>
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Basketball Court</span>
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Athletics Track</span>
+        <span class="bg-gray-100 text-gray-700 px-3 py-1 text-sm rounded-full">Indoor Games</span>
+      </div>
+    </div>
+    <div class="md:order-1">
+      <img src="./assets/sports-ground.jpg" alt="Sports Complex" class="rounded-2xl shadow-md object-cover w-full h-[480px]" />
+    </div>
+  </div>
+
+</section>
+
+<!-- Other Amenities Section -->
+<section class="bg-gray-50 py-16">
+  <div class="w-[70%] mx-auto text-center">
+    <h2 class="text-3xl font-bold text-[#0a1a44] mb-10  primaryFont md:text-5xl">Other Amenities</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <div class="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition flex items-center flex-col gap-4">
+        <div class="w-12 h-12 rounded-full bg-gray-200 flex justify-center items-center"><img src="./assets/wifi.svg" class="w-6"></div>
+        <h4 class="font-semibold text-lg mb-1 primaryFont">Wi-Fi Campus</h4>
+        <p class="text-gray-600 text-sm">High-speed internet connectivity throughout the campus</p>
+      </div>
+
+      <div class="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition flex items-center flex-col gap-4">
+        <div class="w-12 h-12 rounded-full bg-gray-200 flex justify-center items-center"><img src="./assets/bus.svg" class="w-6"></div>
+        <h4 class="font-semibold text-lg mb-1 primaryFont">Transport</h4>
+        <p class="text-gray-600 text-sm">Bus facility for students from nearby areas</p>
+      </div>
+
+      <div class="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition flex items-center flex-col gap-4">
+        <div class="w-12 h-12 rounded-full bg-gray-200 flex justify-center items-center"><img src="./assets/tea.svg" class="w-6"></div>
+        <h4 class="font-semibold text-lg mb-1 primaryFont">Cafeteria</h4>
+        <p class="text-gray-600 text-sm">Hygienic canteen serving nutritious food</p>
+      </div>
+
+      <div class="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition flex items-center flex-col gap-4">
+        <div class="w-12 h-12 rounded-full bg-gray-200 flex justify-center items-center"><img src="./assets/security.svg" class="w-6"></div>
+        <h4 class="font-semibold text-lg mb-1 primaryFont">Security</h4>
+        <p class="text-gray-600 text-sm">24/7 security with CCTV surveillance</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <footer class="bg-[#0a1a44] text-gray-300 pt-25 pb-6">
+    <main class="w-[90%] lg:w-[70%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="bg-[#f7b500] p-3 rounded-full">
+            <img src="./assets/edu-cap-3.svg" alt="logo" class="w-6 h-6" />
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-lg primaryFont">Sant Kenaram</h3>
+            <p class="text-sm">Snatakottar Mahavidyalaya</p>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed mb-4">
+          A premier institution committed to academic excellence and holistic development of students since its establishment.
+        </p>
+        <div class="flex gap-3">
+          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-[#f7b500] rounded-full transition">
+            <img src="/assets/facebook.svg" class="w-4 h-4" />
+          </a>
+          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-[#f7b500] rounded-full transition">
+            <img src="/assets/twitter.svg" class="w-4 h-4" />
+          </a>
+          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-[#f7b500] rounded-full transition">
+            <img src="/assets/instagram.svg" class="w-4 h-4" />
+          </a>
+          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-[#f7b500] rounded-full transition">
+            <img src="/assets/youtube.svg" class="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-bold text-white text-lg mb-4 primaryFont">Quick Links</h3>
+        <ul class="space-y-2 text-sm flex flex-col gap-3">
+          <li><a href="/About.html" class="hover:text-[#f7b500]">About Us</a></li>
+          <li><a href="/Courses.html" class="hover:text-[#f7b500]">Courses</a></li>
+          <li><a href="/Admissions.html" class="hover:text-[#f7b500]">Admissions</a></li>
+          <li><a href="/Facilities.html" class="hover:text-[#f7b500]">Facilities</a></li>
+          <li><a href="/Gallery.html" class="hover:text-[#f7b500]">Gallery</a></li>
+          <li><a href="/Contact.html" class="hover:text-[#f7b500]">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-bold text-white text-lg mb-4 primaryFont">Our Courses</h3>
+        <ul class="space-y-2 text-sm flex flex-col gap-3">
+          <li><a href="/Courses.html" class="hover:text-[#f7b500]">B.Sc. Programs</a></li>
+          <li><a href="/Courses.html" class="hover:text-[#f7b500]">B.A. Programs</a></li>
+          <li><a href="/Courses.html" class="hover:text-[#f7b500]">B.Com</a></li>
+          <li><a href="/Courses.html" class="hover:text-[#f7b500]">M.A. Programs</a></li>
+          <li><a href="/Courses.html" class="hover:text-[#f7b500]">B.Ed.</a></li>
+          <li><a href="/Courses.html" class="hover:text-[#f7b500]">Agriculture</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-bold text-white text-lg mb-4 primaryFont">Contact Us</h3>
+        <ul class="space-y-3 text-sm flex flex-col gap-3">
+          <li class="flex items-start gap-3">
+            <span><img src="./assets/location-pin-svgrepo-com.svg" class="w-5"></span>
+            <p>Lodi, Robertsganj,<br> Sonbhadra (U.P.) – 231216</p>
+          </li>
+          <li class="flex items-center gap-3">
+            <span><img src="./assets/phoneNum-2.svg" class="w-5"></span>
+            <p>+91 12345 67890</p>
+          </li>
+          <li class="flex items-center gap-3">
+            <span><img src="./assets//mail -2.svg" class="w-4"></span>
+            <p>info@sksmcollege.edu.in</p>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <div class="border-t border-gray-700 pt-4 mt-25">
+      <div class="w-[90%] lg:w-[70%] mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400">
+        <p>© 2026 Sant Kenaram Snatakottar Mahavidyalaya. All rights reserved.</p>
+        <div class="flex gap-4 mt-2 sm:mt-0">
+          <a href="#" class="hover:text-[#f7b500]">Privacy Policy</a>
+          <a href="#" class="hover:text-[#f7b500]">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/a2e0ad6d3f.js" crossorigin="anonymous"></script>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('burger-btn');
+      menu.classList.toggle('open');
+      btn.classList.toggle('active');
+    }
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.remove('open');
+        document.getElementById('burger-btn').classList.remove('active');
+      });
+    });
+  </script>
     <!-- Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/a2e0ad6d3f.js" crossorigin="anonymous"></script>
+    <script>
+  // Highlight active page in navbar
+  const links = document.querySelectorAll('.nav-link');
+  const currentPath = window.location.pathname;
+
+  links.forEach(link => {
+    // Normalize both paths for comparison
+    const linkPath = new URL(link.href).pathname;
+    if (linkPath === currentPath) {
+      link.classList.add('bg-[#0a1a44]', 'text-white');
+    } else {
+      link.classList.remove('bg-[#0a1a44]', 'text-white');
+    }
+  });
+</script>
 </body>
 
 </html>
